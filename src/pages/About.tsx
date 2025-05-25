@@ -1,104 +1,16 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Star, Users, Target, Award, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { values } from "@/data/valuesData";
+import { team } from "@/data/teamData";
+import { stats } from "@/data/statsData";
 
 export default function About() {
-  const values = [
-    {
-      icon: <Target className="w-8 h-8 text-blue-500" />,
-      title: "الهدف",
-      description: "تسهيل العمل الإداري والتعليمي للمعلمين والإداريين من خلال أدوات EduFormsة متطورة وسهلة الاستخدام"
-    },
-    {
-      icon: <Users className="w-8 h-8 text-green-500" />,
-      title: "المجتمع",
-      description: "بناء مجتمع تعليمي متصل يدعم التعاون والتطوير المستمر بين المعلمين والمؤسسات التعليمية"
-    },
-    {
-      icon: <Award className="w-8 h-8 text-purple-500" />,
-      title: "الجودة",
-      description: "الالتزام بأعلى معايير الجودة في تصميم النماذج والتقارير لضمان احترافية العمل التعليمي"
-    },
-    {
-      icon: <Heart className="w-8 h-8 text-red-500" />,
-      title: "الشغف",
-      description: "نؤمن بأهمية التعليم ونعمل بشغف لتقديم حلول تقنية تخدم العملية التعليمية في المملكة"
-    }
-  ];
-
-  const team = [
-    {
-      name: "أحمد محمد العتيبي",
-      role: "المؤسس والرئيس التنفيذي",
-      bio: "خبرة 15 عاماً في التعليم والتقنية",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
-    },
-    {
-      name: "فاطمة أحمد السالم",
-      role: "مديرة المنتج",
-      bio: "متخصصة في تجربة المستخدم والتصميم",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c27c11e0?w=300&h=300&fit=crop&crop=face"
-    },
-    {
-      name: "خالد سعد المطيري",
-      role: "مدير التطوير التقني",
-      bio: "خبير في تطوير التطبيقات التعليمية",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
-    }
-  ];
-
-  const stats = [
-    { number: "10,000+", label: "معلم يستخدم المنصة" },
-    { number: "500+", label: "مدرسة تثق بنا" },
-    { number: "50,000+", label: "تقرير تم إنشاؤه" },
-    { number: "99%", label: "معدل رضا العملاء" }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-blue-100">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <BookOpen className="w-7 h-7 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Star className="w-2 h-2 text-yellow-800" />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  EduForms
-                </h1>
-                <p className="text-sm text-gray-600 font-medium">صديق المعلم والإداري</p>
-              </div>
-            </Link>
-
-            <nav className="hidden md:flex items-center gap-8">
-              <Link to="/features" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">الميزات</Link>
-              <Link to="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">الباقات والأسعار</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">تواصل معنا</Link>
-              <Link to="/about" className="text-blue-600 font-bold border-b-2 border-blue-600">من نحن</Link>
-            </nav>
-
-            <div className="flex items-center gap-4">
-              <Link to="/login">
-                <Button variant="outline" className="border-blue-200 hover:bg-blue-50">تسجيل الدخول</Button>
-              </Link>
-              <Link to="/signup">
-                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-                  إنشاء حساب
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-20 px-6 text-center">
@@ -240,23 +152,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <Link to="/" className="inline-flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-lg font-bold">EduForms</span>
-          </Link>
-          <p className="text-gray-400 mb-4">© 2025 EduForms. جميع الحقوق محفوظة.</p>
-          <div className="flex justify-center gap-6 text-sm">
-            <Link to="/about" className="text-gray-400 hover:text-white">من نحن</Link>
-            <Link to="/privacy" className="text-gray-400 hover:text-white">سياسة الخصوصية</Link>
-            <Link to="/contact" className="text-gray-400 hover:text-white">تواصل معنا</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

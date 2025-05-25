@@ -1,177 +1,43 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, FileText, BarChart3, Download, Star, BookOpen, PenTool, Zap, CreditCard } from "lucide-react";
+import { CheckCircle, FileText, PenTool, Download, Zap, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { features } from "@/data/featuresData";
+import { pricingPlans } from "@/data/pricingData";
 import MadaLogo from "@/assets/payment-icons/mada.svg";
 import VisaLogo from "@/assets/payment-icons/visa.svg";
 import MastercardLogo from "@/assets/payment-icons/mastercard.svg";
 import GCCNetworkLogo from "@/assets/payment-icons/gcc-network.svg";
 import ApplePayLogo from "@/assets/payment-icons/apple-pay.svg";
-import SARCurrencyBlack from "@/assets/payment-icons/sar-currency(black).svg";
 import SARCurrencyWhite from "@/assets/payment-icons/sar-currency(white).svg";
 
 export default function Landing() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const features = [
-    {
-      icon: <FileText className="w-8 h-8 text-blue-500" />,
-      title: "نماذج تقارير جاهزة",
-      description: "مكتبة شاملة من النماذج التعليمية المُعدة مسبقاً لجميع المراحل الدراسية"
-    },
-    {
-      icon: <PenTool className="w-8 h-8 text-green-500" />,
-      title: "تخصيص سهل",
-      description: "إمكانية تعديل وتخصيص النماذج لتناسب احتياجاتك التعليمية الخاصة"
-    },
-    {
-      icon: <Download className="w-8 h-8 text-orange-500" />,
-      title: "تصدير احترافي",
-      description: "تصدير التقارير بجودة عالية بصيغة PDF أو PNG للطباعة أو المشاركة"
-    }
-  ];
-
-  const pricingPlans = [
-    {
-      name: "الباقة المجانية",
-      price: "0",
-      period: "مجاناً للأبد",
-      features: [
-        "نموذج تقرير واحد فقط",
-        "تصدير بصيغة PDF و PNG",
-        "4 صور للتقرير",
-        "دعم فني أساسي"
-      ],
-      popular: false,
-      color: "from-gray-600 to-gray-800"
-    },
-    {
-      name: "الباقة الشهرية",
-      price: "15",
-      period: (
-        <span className="flex items-center justify-center gap-1">
-          <img src={SARCurrencyWhite} alt="SAR" className="h-6 w-auto" />
-          <p>/شهر</p>
-        </span>
-      ),
-      originalPrice: "30",
-      discount: "خصم 50%",
-      features: [
-        "4 نماذج مختلفة من التقارير",
-        "نموذج تقرير بـ 3 صور وباركود",
-        "نموذج تقرير بـ 4 صور وباركود",
-        "نموذج تقرير بـ 4 صور",
-        "تصدير التقرير بصيغة PNG و PDF",
-        "ضمان عمل الرابط طوال فترة الاشتراك"
-      ],
-      popular: true,
-      color: "from-blue-500 to-blue-700"
-    },
-    {
-      name: "الباقة السنوية",
-      price: "70",
-      period: (
-        <span className="flex items-center justify-center gap-1">
-          <img src={SARCurrencyWhite} alt="SAR" className="h-6 w-auto" />
-          <p>/سنة</p>
-        </span>
-      ),
-      originalPrice: "240",
-      discount: "خصم 70%",
-      features: [
-        "8 نماذج مختلفة من التقارير",
-        "نموذج تقرير بصورة واحدة",
-        "نموذج تقرير بصورة واحدة وباركود",
-        "نموذج تقرير بصورتين",
-        "نموذج تقرير بصورتين وباركود",
-        "نموذج تقرير بـ 3 صور",
-        "نموذج تقرير بـ 3 صور وباركود",
-        "نموذج تقرير بـ 4 صور"
-      ],
-      popular: false,
-      color: "from-green-500 to-green-700"
-    }
-  ];
 
   const paymentMethods = [
-    {
-      name: "فيزا",
-      logo: <img src={VisaLogo} alt="Visa" className="h-8 w-8" />
-    },
-    {
-      name: "ماستركارد",
-      logo: <img src={MastercardLogo} alt="Mastercard" className="h-8 w-8" />
-    },
-    {
-      name: "مدى",
-      logo: <img src={MadaLogo} alt="Mada" className="h-8 w-8" />
-    },
-    {
-      name: "الشبكة الخليجية",
-      logo: <img src={GCCNetworkLogo} alt="GCC Network" className="h-8 w-auto" />
-    },
-    {
-      name: "Apple Pay",
-      logo: <img src={ApplePayLogo} alt="Apple Pay" className="h-8 w-8" />
-    }
+    { name: "فيزا", logo: <img src={VisaLogo} alt="Visa" className="h-8 w-8" /> },
+    { name: "ماستركارد", logo: <img src={MastercardLogo} alt="Mastercard" className="h-8 w-8" /> },
+    { name: "مدى", logo: <img src={MadaLogo} alt="Mada" className="h-8 w-8" /> },
+    { name: "الشبكة الخليجية", logo: <img src={GCCNetworkLogo} alt="GCC Network" className="h-8 w-auto" /> },
+    { name: "Apple Pay", logo: <img src={ApplePayLogo} alt="Apple Pay" className="h-8 w-8" /> }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-blue-100">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <BookOpen className="w-7 h-7 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Star className="w-2 h-2 text-yellow-800" />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  EduForms
-                </h1>
-                <p className="text-sm text-gray-600 font-medium">صديق المعلم والإداري</p>
-              </div>
-            </div>
-
-            <nav className="hidden md:flex items-center gap-8">
-              <Link to="/features" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">الميزات</Link>
-              <Link to="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">الباقات والأسعار</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">تواصل معنا</Link>
-              <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">من نحن</Link>
-            </nav>
-
-            <div className="flex items-center gap-4">
-              <Link to="/login">
-                <Button variant="outline" className="border-blue-200 hover:bg-blue-50">تسجيل الدخول</Button>
-              </Link>
-              <Link to="/signup">
-                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-                  إنشاء حساب
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-20 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
         <div className="max-w-7xl mx-auto text-center relative">
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
-            <Zap className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-8">
+            <Zap className="w-3 h-3 md:w-4 md:h-4" />
             إيماناً بأهمية الوقت لدى المعلم والإداري في التعليم
           </div>
 
-          <h1 className="text-6xl font-bold text-gray-800 mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
             <span className="block">صديق المعلم</span>
             <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               والإداري
@@ -191,9 +57,11 @@ export default function Landing() {
                 ابدأ رحلتك مجاناً
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="px-10 py-4 text-lg border-2 border-blue-200 hover:bg-blue-50 text-blue-600">
-              تعرف على المزيد
-            </Button>
+            <Link to="/signup">
+              <Button variant="outline" size="lg" className="px-10 py-4 text-lg border-2 border-blue-200 hover:bg-blue-50 text-blue-600  shadow-lg">
+                تعرف على المزيد
+              </Button>
+            </Link>
           </div>
 
           {/* Hero Images */}
@@ -276,8 +144,8 @@ export default function Landing() {
       <section id="pricing" className="py-20 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-block bg-red-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-6">
-              تخفيضات %90 على الباقة السنوية لفترة محدودة
+            <div className="inline-block bg-red-500 text-white px-6 py-2 rounded-full text-xs md:text-sm font-bold mb-6">
+              تخفيضات %50 على الباقة السنوية لفترة محدودة
             </div>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">الباقات والأسعار</h2>
             <p className="text-xl text-gray-600">اختر الباقة التي تناسب احتياجاتك</p>
@@ -301,14 +169,13 @@ export default function Landing() {
                   <div className="text-center">
                     {plan.originalPrice && (
                       <div className="text-lg line-through opacity-70 mb-2 flex justify-center items-center gap-2">
-                        <p>{plan.originalPrice}</p> <img src={SARCurrencyWhite} alt="SAR" className="h-8 w-auto" />
+                        <p>{plan.originalPrice}</p> <img src={SARCurrencyWhite} alt="SAR" className="h-5 w-auto" />
                       </div>
                     )}
-                    <div className="text-5xl font-bold flex justify-center items-center gap-2">
-                      <p>{plan.price}</p>
-                      <span className="text-lg mr-2"><img src={SARCurrencyWhite} alt="SAR" className="h-8 w-auto" /></span>
+                    <div className="flex justify-center items-center gap-2">
+                      <p className="text-5xl font-bold">{plan.price}</p>
+                      <p className="opacity-90 mt-2">{plan.period}</p>
                     </div>
-                    <p className="opacity-90 mt-2">{plan.period}</p>
                   </div>
                 </CardHeader>
                 <CardContent className="p-8">
@@ -346,58 +213,16 @@ export default function Landing() {
                 ابدأ رحلتك مجاناً
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="px-10 py-4 text-lg border-2 border-blue-200 hover:bg-blue-50 text-blue-600">
-              تعرف على المزيد
-            </Button>
+            <Link to="/signup">
+              <Button variant="outline" size="lg" className="px-10 py-4 text-lg border-2 border-blue-200 hover:bg-blue-50 text-blue-600  shadow-lg">
+                تعرف على المزيد
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold">EduForms</h3>
-              </div>
-              <p className="text-gray-400 leading-relaxed">
-                منصة النماذج التعليمية الرائدة في المملكة العربية السعودية
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-blue-400">المنتج</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link to="/features" className="hover:text-white transition-colors">الميزات</Link></li>
-                <li><Link to="/pricing" className="hover:text-white transition-colors">الأسعار</Link></li>
-                <li><Link to="/contact" className="hover:text-white transition-colors">الدعم</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-blue-400">الشركة</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link to="/about" className="hover:text-white transition-colors">من نحن</Link></li>
-                <li><Link to="/contact" className="hover:text-white transition-colors">اتصل بنا</Link></li>
-                <li><Link to="/privacy" className="hover:text-white transition-colors">سياسة الخصوصية</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-blue-400">تواصل معنا</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>support@eduforms.sa</li>
-                <li>+966 11 123 4567</li>
-                <li>الرياض، المملكة العربية السعودية</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 EduForms. جميع الحقوق محفوظة.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

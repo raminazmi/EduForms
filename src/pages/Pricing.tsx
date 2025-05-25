@@ -1,151 +1,35 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, BookOpen, Star, CreditCard } from "lucide-react";
+import { CheckCircle, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { pricingPlans } from "@/data/pricingData";
 import MadaLogo from "@/assets/payment-icons/mada.svg";
 import VisaLogo from "@/assets/payment-icons/visa.svg";
 import MastercardLogo from "@/assets/payment-icons/mastercard.svg";
 import GCCNetworkLogo from "@/assets/payment-icons/gcc-network.svg";
 import ApplePayLogo from "@/assets/payment-icons/apple-pay.svg";
-import SARCurrencyBlack from "@/assets/payment-icons/sar-currency(black).svg";
 import SARCurrencyWhite from "@/assets/payment-icons/sar-currency(white).svg";
 
 export default function Pricing() {
-  const pricingPlans = [
-    {
-      name: "الباقة المجانية",
-      price: "0",
-      period: "مجاناً للأبد",
-      features: [
-        "نموذج تقرير واحد فقط",
-        "تصدير بصيغة PDF و PNG",
-        "4 صور للتقرير",
-        "دعم فني أساسي"
-      ],
-      popular: false,
-      color: "from-gray-600 to-gray-800"
-    },
-    {
-      name: "الباقة الشهرية",
-      price: "15",
-      period: (
-        <span className="flex items-center justify-center gap-1">
-          <img src={SARCurrencyWhite} alt="SAR" className="h-6 w-auto" />
-          <p>/شهر</p>
-        </span>
-      ),
-      originalPrice: "30",
-      discount: "خصم 50%",
-      features: [
-        "4 نماذج مختلفة من التقارير",
-        "نموذج تقرير بـ 3 صور وباركود",
-        "نموذج تقرير بـ 4 صور وباركود",
-        "نموذج تقرير بـ 4 صور",
-        "تصدير التقرير بصيغة PNG و PDF",
-        "ضمان عمل الرابط طوال فترة الاشتراك"
-      ],
-      popular: true,
-      color: "from-blue-500 to-blue-700"
-    },
-    {
-      name: "الباقة السنوية",
-      price: "70",
-      period: (
-        <span className="flex items-center justify-center gap-1">
-          <img src={SARCurrencyWhite} alt="SAR" className="h-6 w-auto" />
-          <p>/سنة</p>
-        </span>
-      ),
-      originalPrice: "240",
-      discount: "خصم 70%",
-      features: [
-        "8 نماذج مختلفة من التقارير",
-        "نموذج تقرير بصورة واحدة",
-        "نموذج تقرير بصورة واحدة وباركود",
-        "نموذج تقرير بصورتين",
-        "نموذج تقرير بصورتين وباركود",
-        "نموذج تقرير بـ 3 صور",
-        "نموذج تقرير بـ 3 صور وباركود",
-        "نموذج تقرير بـ 4 صور"
-      ],
-      popular: false,
-      color: "from-green-500 to-green-700"
-    }
-  ];
-
   const paymentMethods = [
-    {
-      name: "فيزا",
-      logo: <img src={VisaLogo} alt="Visa" className="h-8 w-8" />
-    },
-    {
-      name: "ماستركارد",
-      logo: <img src={MastercardLogo} alt="Mastercard" className="h-8 w-8" />
-    },
-    {
-      name: "مدى",
-      logo: <img src={MadaLogo} alt="Mada" className="h-8 w-8" />
-    },
-    {
-      name: "الشبكة الخليجية",
-      logo: <img src={GCCNetworkLogo} alt="GCC Network" className="h-8 w-auto" />
-    },
-    {
-      name: "Apple Pay",
-      logo: <img src={ApplePayLogo} alt="Apple Pay" className="h-8 w-8" />
-    }
+    { name: "فيزا", logo: <img src={VisaLogo} alt="Visa" className="h-8 w-8" /> },
+    { name: "ماستركارد", logo: <img src={MastercardLogo} alt="Mastercard" className="h-8 w-8" /> },
+    { name: "مدى", logo: <img src={MadaLogo} alt="Mada" className="h-8 w-8" /> },
+    { name: "الشبكة الخليجية", logo: <img src={GCCNetworkLogo} alt="GCC Network" className="h-8 w-auto" /> },
+    { name: "Apple Pay", logo: <img src={ApplePayLogo} alt="Apple Pay" className="h-8 w-8" /> }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-blue-100">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <BookOpen className="w-7 h-7 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Star className="w-2 h-2 text-yellow-800" />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  EduForms
-                </h1>
-                <p className="text-sm text-gray-600 font-medium">صديق المعلم والإداري</p>
-              </div>
-            </Link>
-
-            <nav className="hidden md:flex items-center gap-8">
-              <Link to="/features" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">الميزات</Link>
-              <Link to="/pricing" className="text-blue-600 font-bold border-b-2 border-blue-600">الباقات والأسعار</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">تواصل معنا</Link>
-              <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">من نحن</Link>
-            </nav>
-
-            <div className="flex items-center gap-4">
-              <Link to="/login">
-                <Button variant="outline" className="border-blue-200 hover:bg-blue-50">تسجيل الدخول</Button>
-              </Link>
-              <Link to="/signup">
-                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-                  إنشاء حساب
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="inline-block bg-red-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-8">
-            تخفيضات %90 على الباقة السنوية لفترة محدودة
+            تخفيضات %50 على الباقة السنوية لفترة محدودة
           </div>
           <h1 className="text-5xl font-bold text-gray-800 mb-6">الباقات والأسعار</h1>
           <p className="text-xl text-gray-600 mb-8">اختر الباقة التي تناسب احتياجاتك واستمتع بتوفير الوقت والجهد</p>
@@ -265,23 +149,7 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <Link to="/" className="inline-flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-lg font-bold">EduForms</span>
-          </Link>
-          <p className="text-gray-400 mb-4">© 2025 EduForms. جميع الحقوق محفوظة.</p>
-          <div className="flex justify-center gap-6 text-sm">
-            <Link to="/about" className="text-gray-400 hover:text-white">من نحن</Link>
-            <Link to="/privacy" className="text-gray-400 hover:text-white">سياسة الخصوصية</Link>
-            <Link to="/contact" className="text-gray-400 hover:text-white">تواصل معنا</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
