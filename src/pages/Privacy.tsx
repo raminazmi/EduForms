@@ -70,7 +70,7 @@ export default function Privacy() {
                 <p className="text-sm text-gray-600 font-medium">صديق المعلم والإداري</p>
               </div>
             </Link>
-            
+
             <nav className="hidden md:flex items-center gap-8">
               <Link to="/features" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">الميزات</Link>
               <Link to="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">الباقات والأسعار</Link>
@@ -119,11 +119,11 @@ export default function Privacy() {
           <Card className="p-8 shadow-lg border-0">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">مقدمة</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              مرحباً بك في EduForms. نحن شركة تقنية تعليمية مقرها في المملكة العربية السعودية، نقدم 
-              منصة رقمية لإنشاء وإدارة النماذج والتقارير التعليمية للمعلمين والإداريين.
+              مرحباً بك في EduForms. نحن شركة تقنية تعليمية مقرها في المملكة العربية السعودية، نقدم
+              منصة EduFormsة لإنشاء وإدارة النماذج والتقارير التعليمية للمعلمين والإداريين.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              هذه السياسة تشرح بوضوح كيف نتعامل مع بياناتك الشخصية، وما هي حقوقك، وكيف يمكنك 
+              هذه السياسة تشرح بوضوح كيف نتعامل مع بياناتك الشخصية، وما هي حقوقك، وكيف يمكنك
               التحكم في معلوماتك. نلتزم بمبادئ الشفافية والأمان في جميع عملياتنا.
             </p>
           </Card>
@@ -203,7 +203,7 @@ export default function Privacy() {
           <Card className="p-8 shadow-lg border-0 bg-gradient-to-br from-blue-50 to-purple-50">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">تواصل معنا</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو كيفية تعاملنا مع بياناتك، 
+              إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو كيفية تعاملنا مع بياناتك،
               لا تتردد في التواصل معنا:
             </p>
             <div className="space-y-2 mb-6">

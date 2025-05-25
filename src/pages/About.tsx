@@ -9,7 +9,7 @@ export default function About() {
     {
       icon: <Target className="w-8 h-8 text-blue-500" />,
       title: "الهدف",
-      description: "تسهيل العمل الإداري والتعليمي للمعلمين والإداريين من خلال أدوات رقمية متطورة وسهلة الاستخدام"
+      description: "تسهيل العمل الإداري والتعليمي للمعلمين والإداريين من خلال أدوات EduFormsة متطورة وسهلة الاستخدام"
     },
     {
       icon: <Users className="w-8 h-8 text-green-500" />,
@@ -166,7 +166,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">قيمنا ورؤيتنا</h2>
-            <p className="text-xl text-gray-600">المبادئ التي تقود عملنا وتشكل مستقبل التعليم الرقمي</p>
+            <p className="text-xl text-gray-600">المبادئ التي تقود عملنا وتشكل مستقبل التعليم الEduForms</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
