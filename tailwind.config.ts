@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -23,7 +22,7 @@ export default {
 				'arabic': ['IBM Plex Sans Arabic', 'Arial', 'sans-serif'],
 			},
 			colors: {
-				border: 'hsl(var(--border))',
+				'custom-border': 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
