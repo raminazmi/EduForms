@@ -1,6 +1,6 @@
 # EduForms - Educational Reports Platform
 
-A comprehensive educational forms and reports platform built with Laravel, Inertia.js, and React.
+A comprehensive educational forms and reports platform built with React, TypeScript, and modern web technologies.
 
 ## 🚀 Features
 
@@ -15,23 +15,20 @@ A comprehensive educational forms and reports platform built with Laravel, Inert
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Laravel 12
 - **Frontend**: React 18 with TypeScript
-- **Bridge**: Inertia.js
+- **Build Tool**: Vite
 - **Styling**: Tailwind CSS
 - **State Management**: Redux Toolkit
-- **Database**: MySQL/PostgreSQL
-- **Payment**: Stripe
-- **PDF Generation**: DomPDF
-- **Image Processing**: Intervention Image
+- **UI Components**: Radix UI + shadcn/ui
+- **Forms**: React Hook Form + Zod
+- **Routing**: React Router DOM
+- **Charts**: Recharts
+- **Icons**: Lucide React + Heroicons
 
 ## 📋 Prerequisites
 
-- PHP 8.2+
 - Node.js 18+
-- Composer
-- MySQL/PostgreSQL
-- Redis (optional, for caching)
+- npm or yarn
 
 ## 🔧 Installation
 
@@ -41,63 +38,32 @@ A comprehensive educational forms and reports platform built with Laravel, Inert
    cd eduforms-app
    ```
 
-2. **Install PHP dependencies**
-   ```bash
-   composer install
-   ```
-
-3. **Install Node.js dependencies**
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-4. **Environment setup**
+3. **Start the development server**
    ```bash
-   cp .env.example .env
-   php artisan key:generate
+   npm run dev
    ```
 
-5. **Configure environment variables**
-   ```env
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=eduforms
-   DB_USERNAME=root
-   DB_PASSWORD=
-
-   STRIPE_KEY=your_stripe_publishable_key
-   STRIPE_SECRET=your_stripe_secret_key
-   STRIPE_WEBHOOK_SECRET=your_webhook_secret
-   ```
-
-6. **Run migrations and seeders**
-   ```bash
-   php artisan migrate --seed
-   ```
-
-7. **Build assets**
+4. **Build for production**
    ```bash
    npm run build
    ```
 
-8. **Start the development server**
-   ```bash
-   php artisan serve
-   npm run dev
-   ```
+## 🗄️ Data Structure
 
-## 🗄️ Database Schema
+### Core Data Models
 
-### Core Tables
-
-- **users**: User accounts with role-based access
-- **subscription_plans**: Available subscription plans
-- **user_subscriptions**: User subscription records
-- **template_categories**: Template categorization
-- **templates**: Report templates with structure
-- **user_reports**: User-generated reports
-- **payments**: Payment transaction records
+- **Users**: User accounts with role-based access
+- **Subscription Plans**: Available subscription plans
+- **User Subscriptions**: User subscription records
+- **Template Categories**: Template categorization
+- **Templates**: Report templates with structure
+- **User Reports**: User-generated reports
+- **Payments**: Payment transaction records
 
 ### Key Relationships
 
@@ -114,10 +80,10 @@ A comprehensive educational forms and reports platform built with Laravel, Inert
 - **Teacher**: Template access and report creation
 - **User**: Basic access
 
-### Middleware
-- `auth`: Authenticated users only
-- `role:admin`: Admin users only
-- `subscription`: Active subscription required
+### Features
+- JWT-based authentication
+- Role-based route protection
+- Persistent login state
 
 ## 💳 Payment Integration
 
@@ -150,98 +116,60 @@ A comprehensive educational forms and reports platform built with Laravel, Inert
 - Arabic (RTL)
 - English (LTR)
 
-### Translation Files
-- `resources/lang/ar.json`
-- `resources/lang/en.json`
+### Translation System
+- React-based translation hooks
+- Dynamic language switching
+- RTL/LTR layout support
 
 ## 🧪 Testing
 
 Run the test suite:
 ```bash
-php artisan test
+npm run test
 ```
 
-### Test Coverage
-- Authentication tests
-- Subscription management tests
-- Export functionality tests
-- Payment integration tests
+## 📚 Available Scripts
 
-## 📚 API Documentation
-
-### Authentication Endpoints
-- `POST /login` - User login
-- `POST /register` - User registration
-- `POST /logout` - User logout
-
-### Template Endpoints
-- `GET /api/templates` - List templates
-- `GET /api/templates/{id}` - Get template details
-- `POST /api/templates/{id}/use` - Use template
-
-### Report Endpoints
-- `GET /api/reports` - List user reports
-- `POST /api/reports` - Create report
-- `PUT /api/reports/{id}` - Update report
-- `DELETE /api/reports/{id}` - Delete report
-- `POST /api/reports/{id}/export/{format}` - Export report
-
-### Payment Endpoints
-- `POST /api/payments/checkout` - Initialize payment
-- `POST /api/payments/confirm` - Confirm payment
-- `POST /api/webhooks/stripe` - Stripe webhook
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build for development
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
 ## 🚀 Deployment
 
-### Production Setup
+### Production Build
 
-1. **Server Requirements**
-   - PHP 8.2+ with required extensions
-   - Web server (Nginx/Apache)
-   - Database server
-   - Redis (recommended)
-
-2. **Environment Configuration**
-   ```env
-   APP_ENV=production
-   APP_DEBUG=false
-   APP_URL=https://your-domain.com
-   ```
-
-3. **Optimization Commands**
+1. **Build the application**
    ```bash
-   php artisan config:cache
-   php artisan route:cache
-   php artisan view:cache
    npm run build
    ```
 
-4. **Queue Setup**
+2. **Preview the build**
    ```bash
-   php artisan queue:work --daemon
+   npm run preview
    ```
 
-### Docker Deployment
+3. **Deploy to your hosting provider**
+   - Upload the `dist` folder contents
+   - Configure your web server to serve the static files
+   - Set up proper routing for SPA
 
-```dockerfile
-FROM php:8.2-fpm
+### Environment Variables
 
-# Install dependencies and configure
-# ... (Docker configuration)
-
-COPY . /var/www/html
-RUN composer install --no-dev --optimize-autoloader
-RUN npm ci && npm run build
+Create a `.env` file in the root directory:
+```env
+VITE_API_URL=https://your-api-url.com
+VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_key
 ```
 
 ## 🔧 Configuration
 
 ### Key Configuration Files
-- `config/app.php` - Application settings
-- `config/services.php` - External service configuration
-- `config/filesystems.php` - File storage configuration
-- `tailwind.config.js` - Tailwind CSS configuration
 - `vite.config.js` - Vite build configuration
+- `tailwind.config.ts` - Tailwind CSS configuration
+- `tsconfig.json` - TypeScript configuration
+- `components.json` - shadcn/ui configuration
 
 ## 🤝 Contributing
 
