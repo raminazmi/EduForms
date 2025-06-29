@@ -63,15 +63,7 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer utilities {
-  .border-custom-border {
-    border-color: hsl(var(--border));
-  }
-}
-
-@layer base {
   * {
     @apply border border-custom-border;
   }
@@ -87,6 +79,10 @@
 }
 
 @layer utilities {
+  .border-custom-border {
+    border-color: hsl(var(--border));
+  }
+
   .animate-fade-in {
     animation: fade-in 0.3s ease-out;
   }
